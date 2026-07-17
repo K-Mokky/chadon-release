@@ -8,10 +8,10 @@
 <link rel="icon" href="favicon.ico">
 <style>
   :root{
-    --bg:#f6f8fb; --card:#ffffff; --border:#e3e8f0;
-    --ink:#1c2433; --sub:#5b6678;
-    --primary:#1f6feb; --primary-dark:#1a5fd0;
-    --accent:#0d3b8f;
+    --bg:#f5faf8; --card:#ffffff; --border:#ddebe5;
+    --ink:#1c2e29; --sub:#5c6d67;
+    --primary:#1e9e7e; --primary-dark:#178368;
+    --accent:#0f6b54;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
@@ -20,10 +20,11 @@
   .wrap{max-width:960px;margin:0 auto;padding:0 20px}
 
   /* ---------- 헤더 ---------- */
-  header{background:linear-gradient(135deg,#0d3b8f 0%,#1f6feb 100%);color:#fff;
+  header{background:linear-gradient(135deg,#0f6b54 0%,#2bb894 100%);color:#fff;
          padding:64px 0 72px;text-align:center}
   .logo{display:inline-flex;align-items:center;justify-content:center;
-        width:76px;height:76px;border-radius:20px;background:#fff;color:var(--accent);
+        width:76px;height:76px;border-radius:22px;
+        background:linear-gradient(180deg,#52d8b6,#1e9e7e);color:#fff;
         font-size:42px;font-weight:800;margin-bottom:18px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
   header h1{font-size:40px;letter-spacing:-1px}
   header .slogan{font-size:19px;margin-top:8px;opacity:.92}
@@ -34,7 +35,7 @@
   .dl-btn:hover{transform:translateY(-2px)}
   .dl-meta{margin-top:12px;font-size:13px;opacity:.8}
   .dl-alt{margin-top:6px;font-size:12px;opacity:.65}
-  .dl-alt a{color:#dce8ff;text-decoration:underline}
+  .dl-alt a{color:#d6f5ea;text-decoration:underline}
 
   /* ---------- 본문 공통 ---------- */
   section{padding:52px 0}
@@ -56,7 +57,7 @@
   .step .card{flex:1}
   .step h3{font-size:15px;margin-bottom:4px}
   .step p{font-size:14px;color:var(--sub)}
-  .step code{background:#eef2f8;border-radius:4px;padding:1px 6px;font-size:13px}
+  .step code{background:#e9f6f0;border-radius:4px;padding:1px 6px;font-size:13px}
 
   /* ---------- FAQ ---------- */
   details{background:var(--card);border:1px solid var(--border);border-radius:12px;
