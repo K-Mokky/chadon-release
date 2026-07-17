@@ -4,8 +4,6 @@
 GitHub Pages로 서비스되는 공식 웹사이트(<https://chadon.mokky.store>)와
 사용자 앱이 자동 업데이트에 사용하는 버전 정보를 담습니다.
 
-앱 소스 코드는 [garbage-money](https://github.com/K-Mokky/garbage-money) 저장소에 있습니다.
-
 ## 구성
 
 ```
@@ -50,19 +48,6 @@ rem garbage-money 폴더에서
 build.bat                                       rem 빌드 + 옆의 chadon-release로 복사
 python tools\publish_release.py --notes "바뀐 점" --push   rem 커밋/푸시까지
 ```
-
-## 최초 웹사이트 설정 (1회)
-
-1. **GitHub Pages 켜기** — 이 저장소 **Settings → Pages** 에서
-   Source: `Deploy from a branch`, Branch: `main` / `/ (root)` 선택.
-2. **DNS 설정** — mokky.store 도메인의 DNS에 CNAME 레코드 추가:
-
-   | 종류  | 이름(호스트) | 값                  |
-   |-------|--------------|---------------------|
-   | CNAME | `chadon`     | `k-mokky.github.io` |
-
-3. Pages 설정 화면의 Custom domain 에 `chadon.mokky.store` 가 잡히면
-   **Enforce HTTPS** 를 켠다. (저장소의 `CNAME` 파일이 이미 있으므로 자동 인식됨)
 
 ## 자동 업데이트 동작
 
