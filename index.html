@@ -5,46 +5,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>차돈 — 자동차 정비소 전용 관리 프로그램</title>
 <meta name="description" content="차돈은 자동차 정비소를 위한 무료 매출/매입 관리 프로그램입니다. 정비일지, 고객관리, 부품재고, 매출통계, 일일마감, 클라우드 백업까지 한 번에.">
+<meta name="theme-color" content="#22b3a2">
 <link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icon.png">
+<meta property="og:title" content="차돈 — 자동차 정비소 전용 관리 프로그램">
+<meta property="og:description" content="정비일지·고객·부품재고·매출통계·클라우드 백업까지, 정비소 장부 업무를 프로그램 하나로. Windows용 무료.">
+<meta property="og:image" content="https://chadon.mokky.store/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chadon.mokky.store">
 <style>
+  /* ---------- G마켓 산스 Medium ---------- */
+  @font-face{
+    font-family:'GmarketSansMedium';
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight:500;font-style:normal;font-display:swap;
+  }
+
   :root{
-    --bg:#f5faf8; --card:#ffffff; --border:#ddebe5;
-    --ink:#1c2e29; --sub:#5c6d67;
-    --primary:#1e9e7e; --primary-dark:#178368;
-    --accent:#0f6b54;
+    /* 아이콘 그라데이션 색 */
+    --icon-blue:#61bef9; --icon-teal:#7ad4d5; --icon-mint:#96edb8;
+    /* UI 팔레트 */
+    --bg:#f1faf7; --card:#ffffff; --border:#d8ebe5;
+    --ink:#173a36; --sub:#5b6f6b;
+    --primary:#17b0a0; --primary-dark:#0f8f82; --accent:#0c7a6f;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
-       background:var(--bg);color:var(--ink);line-height:1.65}
-  a{color:var(--primary);text-decoration:none}
+  body{font-family:'GmarketSansMedium',"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+       font-weight:500;background:var(--bg);color:var(--ink);line-height:1.65}
+  a{color:var(--primary-dark);text-decoration:none}
   .wrap{max-width:960px;margin:0 auto;padding:0 20px}
 
   /* ---------- 헤더 ---------- */
-  header{background:linear-gradient(135deg,#0f6b54 0%,#2bb894 100%);color:#fff;
-         padding:64px 0 72px;text-align:center}
-  .logo{display:inline-flex;align-items:center;justify-content:center;
-        width:76px;height:76px;border-radius:22px;
-        background:linear-gradient(180deg,#52d8b6,#1e9e7e);color:#fff;
-        font-size:42px;font-weight:800;margin-bottom:18px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-  header h1{font-size:40px;letter-spacing:-1px}
-  header .slogan{font-size:19px;margin-top:8px;opacity:.92}
-  header .sub{font-size:15px;margin-top:4px;opacity:.75}
-  .dl-btn{display:inline-block;margin-top:30px;padding:16px 44px;border-radius:12px;
-          background:#fff;color:var(--accent);font-size:19px;font-weight:700;
-          box-shadow:0 6px 20px rgba(0,0,0,.25);transition:transform .12s}
+  header{position:relative;overflow:hidden;color:#fff;text-align:center;
+         padding:66px 0 74px;
+         background:linear-gradient(135deg,#2f9fd6 0%,#22b3a2 52%,#3cba71 100%)}
+  header::after{content:"";position:absolute;left:-10%;top:-60%;width:120%;height:120%;
+    background:radial-gradient(ellipse at 50% 0,rgba(255,255,255,.28),rgba(255,255,255,0) 60%);
+    pointer-events:none}
+  header .wrap{position:relative;z-index:1}
+  .logo{width:96px;height:96px;border-radius:24px;margin-bottom:16px;
+        box-shadow:0 12px 30px rgba(6,60,52,.35);display:inline-block;vertical-align:middle}
+  header h1{font-size:42px;letter-spacing:-1.5px}
+  header .slogan{font-size:19px;margin-top:8px;opacity:.95}
+  header .sub{font-size:15px;margin-top:4px;opacity:.8}
+  .dl-btn{display:inline-block;margin-top:30px;padding:16px 46px;border-radius:14px;
+          background:#fff;color:var(--accent);font-size:19px;
+          box-shadow:0 10px 26px rgba(6,60,52,.28);transition:transform .12s}
   .dl-btn:hover{transform:translateY(-2px)}
-  .dl-meta{margin-top:12px;font-size:13px;opacity:.8}
-  .dl-alt{margin-top:6px;font-size:12px;opacity:.65}
-  .dl-alt a{color:#d6f5ea;text-decoration:underline}
+  .dl-meta{margin-top:12px;font-size:13px;opacity:.85}
+  .dl-alt{margin-top:6px;font-size:12px;opacity:.7}
+  .dl-alt a{color:#eafff8;text-decoration:underline}
 
   /* ---------- 본문 공통 ---------- */
   section{padding:52px 0}
-  section h2{font-size:26px;margin-bottom:22px;letter-spacing:-.5px}
-  section h2 small{font-size:14px;color:var(--sub);font-weight:400;margin-left:10px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+  section h2{font-size:26px;letter-spacing:-.5px;margin-bottom:22px;
+             display:flex;align-items:center;gap:10px}
+  section h2::before{content:"";width:10px;height:26px;border-radius:5px;
+    background:linear-gradient(180deg,var(--icon-blue),var(--icon-mint))}
+  section h2 small{font-size:14px;color:var(--sub);font-weight:500}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;
+        box-shadow:0 4px 16px rgba(23,58,54,.04)}
 
   /* ---------- 기능 ---------- */
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .grid .card{border-top:3px solid transparent;
+              background:
+                linear-gradient(var(--card),var(--card)) padding-box,
+                linear-gradient(135deg,var(--icon-blue),var(--icon-mint)) border-box;
+              border:1px solid transparent}
   .grid .card h3{font-size:16px;margin-bottom:6px;color:var(--accent)}
   .grid .card p{font-size:14px;color:var(--sub)}
 
@@ -52,26 +80,30 @@
   .steps{counter-reset:step;display:flex;flex-direction:column;gap:12px}
   .step{display:flex;gap:16px;align-items:flex-start}
   .step::before{counter-increment:step;content:counter(step);
-    flex:0 0 34px;height:34px;border-radius:50%;background:var(--primary);color:#fff;
-    display:flex;align-items:center;justify-content:center;font-weight:700}
+    flex:0 0 36px;height:36px;border-radius:50%;
+    background:linear-gradient(135deg,var(--icon-blue),var(--primary));color:#fff;
+    display:flex;align-items:center;justify-content:center}
   .step .card{flex:1}
   .step h3{font-size:15px;margin-bottom:4px}
   .step p{font-size:14px;color:var(--sub)}
-  .step code{background:#e9f6f0;border-radius:4px;padding:1px 6px;font-size:13px}
+  .step code{background:#e2f5ee;border-radius:5px;padding:1px 6px;font-size:13px}
 
   /* ---------- FAQ ---------- */
   details{background:var(--card);border:1px solid var(--border);border-radius:12px;
           padding:14px 18px;margin-bottom:10px}
-  details summary{cursor:pointer;font-weight:700;font-size:15px}
+  details summary{cursor:pointer;font-size:15px;color:var(--ink)}
+  details summary::marker{color:var(--primary)}
   details p{margin-top:10px;font-size:14px;color:var(--sub)}
+  details code{background:#e2f5ee;border-radius:5px;padding:1px 6px;font-size:13px}
 
   footer{border-top:1px solid var(--border);padding:32px 0 44px;text-align:center;
          font-size:13px;color:var(--sub)}
   footer a{color:var(--sub);text-decoration:underline}
 
   @media (max-width:600px){
-    header{padding:44px 0 52px}
-    header h1{font-size:30px}
+    header{padding:46px 0 54px}
+    header h1{font-size:31px}
+    .logo{width:80px;height:80px}
   }
 </style>
 </head>
@@ -79,7 +111,7 @@
 
 <header>
   <div class="wrap">
-    <div class="logo">C</div>
+    <img class="logo" src="icon.png" alt="차돈 앱 아이콘" width="96" height="96">
     <h1>차돈</h1>
     <div class="slogan">지경자동차에서 제작한, 자동차 정비소 관리 프로그램</div>
     <div class="sub">자동차 정비소 매출/매입 관리 프로그램 · Windows용 무료</div>
