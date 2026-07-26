@@ -3,25 +3,54 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex">
+<!-- noindex : 이 페이지 자체를 색인하지 않는다.
+     nofollow : 조회 화면(인증서버) 주소를 검색엔진이 따라가 색인하지 못하게 한다. -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
 <title>차돈 모바일 조회</title>
 <link rel="icon" href="../favicon.ico">
 <style>
   html,body{height:100%}
   body{margin:0;background:#F5F5F7}
   iframe{display:block;width:100%;height:100%;height:100dvh;border:0}
-  noscript p,.fallback{font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-                       text-align:center;padding:24px;color:#173a36}
+  .msg{position:fixed;inset:0;margin:0;display:flex;align-items:center;
+       justify-content:center;text-align:center;padding:24px;line-height:1.6;
+       background:#F5F5F7;color:#173a36;
+       font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
 </style>
 </head>
 <body>
-<!-- 주소창은 chadon.mokky.store/review 로 유지되고, 실제 조회 화면은 인증서버(Worker)의 /m 을 그대로 담아 보여준다 -->
-<iframe src="https://chadon-server.yeskim03-0321.workers.dev/m"
-        title="차돈 모바일 조회"
-        allow="clipboard-write"
+<!-- 사용자에게 보이는 주소는 언제나 https://chadon.mokky.store/review 하나뿐이다.
+     로그인·자료 조회 화면은 인증서버가 그려서 이 틀(iframe) 안에 담긴다.
+     인증서버 주소는 아래 스크립트의 VIEW_SRC 한 곳에만 두고, 링크(<a>)나
+     HTML 속성으로는 어디에도 노출하지 않는다 (검색·스크래핑·오클릭 최소화).
+     나중에 인증서버를 커스텀 도메인에 붙이면 VIEW_SRC 한 줄만 바꾸면 된다. -->
+<iframe id="view" title="차돈 모바일 조회" allow="clipboard-write"
         referrerpolicy="no-referrer"></iframe>
 <noscript>
-  <p><a href="https://chadon-server.yeskim03-0321.workers.dev/m">여기를 눌러 모바일 조회로 이동하세요</a></p>
+  <p class="msg">모바일 조회는 자바스크립트가 필요합니다.<br>
+  브라우저 설정에서 자바스크립트를 켠 뒤 새로고침해 주세요.</p>
 </noscript>
+<script>
+(function () {
+  var VIEW_SRC = "https://chadon-server.yeskim03-0321.workers.dev/m"; // ← 커스텀 도메인 연결 시 이 줄만 교체
+  var frame = document.getElementById("view");
+  var msg = document.createElement("p");
+  var loaded = false;
+  msg.className = "msg";
+  msg.textContent = "조회 화면을 불러오는 중입니다…";
+  document.body.appendChild(msg);
+  frame.addEventListener("load", function () {
+    loaded = true;
+    if (msg.parentNode) { msg.parentNode.removeChild(msg); }
+  });
+  setTimeout(function () {
+    if (!loaded) {
+      msg.textContent = "조회 화면을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.";
+    }
+  }, 8000);
+  frame.src = VIEW_SRC;
+})();
+</script>
 </body>
 </html>

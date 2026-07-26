@@ -1,0 +1,14 @@
+# 차돈 공식 사이트 (https://chadon.mokky.store)
+#
+# 소개 페이지는 검색에 나와도 되지만, 배포 바이너리·버전 파일은 크롤 대상이 아니다.
+# 55MB exe 를 크롤러가 반복 내려받으면 GitHub Pages 대역폭만 축낸다.
+#
+# 모바일 조회 페이지(/review/)는 일부러 막지 않는다 — 그 페이지의
+# <meta name="robots" content="noindex, nofollow"> 를 검색엔진이 읽어야
+# 색인에서 빠지기 때문이다(robots.txt 로 크롤을 막으면 noindex 를 못 읽는다).
+
+User-agent: *
+Disallow: /release/
+Disallow: /latest.json
+
+Sitemap: https://chadon.mokky.store/sitemap.xml
