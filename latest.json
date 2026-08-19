@@ -1,8 +1,8 @@
 {
-  "version": "3.2.7",
+  "version": "3.2.8",
   "url": "https://chadon.mokky.store/release/Chadon.exe",
   "page": "https://chadon.mokky.store",
-  "notes": "차돈 v3.2.7 자동 배포",
-  "sha256": "11e0e8daffc98ce19499d3f119b1db8720f1fcebc453fd7c8681a7a9acaaa3c4",
-  "sig": "3d340fc4a0d6b4cdf27458c9617d97a5fe757f7bd450c1b1349ac254f8b5bfe92632e0a567b160a7b87a748f3cc3245219acb076a9ed5791f980f3d5f4969603"
+  "notes": "차돈 v3.2.8 자동 배포",
+  "sha256": "8c5029506029f4e494af9208c95a6cbc252fbbe1a8c8950e18d8b94dfea787da",
+  "sig": "72cee1e0fd6809a856f4724e10379e4949aff574bdeda15e99ca7d29d3555c21ad31078643fa5db82a9d6e073aa46495e3fc467ab2a25ff75348ae83bd5e6402"
 }
