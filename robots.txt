@@ -10,5 +10,6 @@
 User-agent: *
 Disallow: /release/
 Disallow: /latest.json
+# security.txt 는 크롤러가 읽어야 한다. Disallow 하지 않는다.
 
 Sitemap: https://chadon.mokky.store/sitemap.xml

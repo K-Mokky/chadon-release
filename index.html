@@ -167,8 +167,8 @@
       <h3>다운로드 후 실행</h3>
       <p>위의 <b>[차돈 다운로드]</b> 버튼으로 <code>차돈.exe</code> 를 받아 원하는 폴더에 두고
       더블클릭하면 끝입니다. 별도 설치 과정이 없습니다.
-      (자료는 exe 옆에 만들어지는 <code>data</code> 폴더에 저장되므로,
-      USB가 아닌 고정된 폴더에 두는 것을 권장합니다.)</p>
+      (자료는 Windows 사용자 폴더의 <code>%APPDATA%\chadon\chadon.db</code> 에
+      저장됩니다. exe 를 옮겨도 자료는 그대로입니다.)</p>
     </div></div>
     <div class="step"><div class="card">
       <h3>인증키 입력</h3>
@@ -178,19 +178,19 @@
     </div></div>
     <div class="step"><div class="card">
       <h3>환경설정 (선택)</h3>
-      <p><b>마법사 → 환경설정</b>에서 상호·전화·주소를 입력해 두면 계산서 등 인쇄물 상단에
+      <p><b>환경설정</b>에서 상호·전화·주소를 입력해 두면 계산서 등 인쇄물 상단에
       표시됩니다. 계산서 기본 방식과 자동 백업도 여기서 설정합니다.</p>
     </div></div>
     <div class="step"><div class="card">
       <h3>기존 자료 가져오기 (선택)</h3>
       <p>다른 정비 프로그램을 쓰고 있었다면, 그 프로그램의 <b>엑셀(CSV) 내보내기</b>로 저장한 파일을
-      <b>마법사 → 타 앱 자료 가져오기</b>에서 반입하세요. 정비일지·고객·부품을 지원하며
+      <b>데이터 관리 → 타 앱 자료 가져오기</b>에서 반입하세요. 정비일지·고객·부품을 지원하며
       열 이름을 자동으로 인식합니다.</p>
     </div></div>
     <div class="step"><div class="card">
       <h3>정비 등록 시작</h3>
-      <p><b>정비일지 → 신규</b> 또는 <b>마법사</b>의 3단계 빠른 등록으로 정비 내역을 기록하세요.
-      완결처리하면 계산금액이 채워지고, <b>데이터 전송 → 일일마감</b>에서 하루를 마감하면 자동 백업과 함께 완결·완료 건이 각 일지로 정리됩니다.</p>
+      <p><b>정비일지 → 신규</b>로 정비 내역을 기록하세요.
+      완결처리하면 계산금액이 채워지고, <b>일일마감 → 마감하기</b>에서 하루를 마감하면 자동 백업과 함께 완결·완료 건이 각 일지로 정리됩니다.</p>
     </div></div>
   </div>
 </section>
@@ -214,6 +214,15 @@
     다시 설치하기 전까지는 다시 켤 수 없습니다.</p>
   </details>
   <details>
+    <summary>2026년 10월 보안 이슈(PHP, Windows 업데이트)와 차돈은 관련이 있나요?</summary>
+    <p>차돈 사이트와 인증 서버는 PHP·GitLab·Railway를 쓰지 않습니다.
+    2026-10-21에 공개된 PHP 원격실행 취약점의 대상이 아니에요.</p>
+    <p>다만 차돈.exe는 브라우저로 받는 파일이라, Windows가 2026년 10월 업데이트를
+    받지 않았으면 SmartScreen 경고가 빠질 수 있습니다(CVE-2026-96951).
+    <b>설정 → Windows 업데이트</b>에서 최신 누적 업데이트를 설치한 뒤,
+    이 사이트에서 받은 파일만 실행하세요. 앱은 서명된 업데이트만 교체합니다.</p>
+  </details>
+  <details>
     <summary>업데이트는 어떻게 하나요?</summary>
     <p>따로 할 일이 없습니다. 차돈은 시작할 때 이 사이트의 버전 정보를 확인해서
     새 버전이 있으면 <b>"새 버전이 나왔습니다"</b> 안내를 띄웁니다.
@@ -222,15 +231,15 @@
   </details>
   <details>
     <summary>내 자료는 어디에 저장되나요?</summary>
-    <p>실행 파일 옆의 <code>data\chadon.db</code> 파일 한 개에 모두 저장됩니다.
-    이 파일만 복사해 두면 그대로 백업이 됩니다. 프로그램 안의 <b>[백업]</b> 메뉴로
-    로컬+클라우드 백업을 쓰면 더 안전합니다.</p>
+    <p>Windows 사용자 폴더의 <code>%APPDATA%\chadon\chadon.db</code> 파일 한 개에
+    모두 저장됩니다. 이 파일만 복사해 두면 그대로 백업이 됩니다.
+    프로그램 안의 <b>[백업]</b> 메뉴로 로컬+클라우드 백업을 쓰면 더 안전합니다.</p>
   </details>
   <details>
     <summary>PC를 바꿨어요. 자료를 옮기려면?</summary>
     <p>새 PC에서 차돈을 받아 실행하고 인증키를 등록한 뒤(기기 교체는 관리자에게 문의),
     <b>[백업] → [클라우드에서 복원]</b>을 누르면 마지막 클라우드 백업이 그대로 복원됩니다.
-    또는 이전 PC의 <code>data\chadon.db</code> 파일을 새 PC의 exe 옆 <code>data</code> 폴더로
+    또는 이전 PC의 <code>%APPDATA%\chadon\chadon.db</code> 파일을 새 PC의 같은 위치로
     복사해도 됩니다.</p>
   </details>
   <details>
@@ -246,6 +255,8 @@
   <div class="wrap">
     <p><b>차돈</b> — 지경자동차에서 제작한, 자동차 정비소 관리 프로그램</p>
     <p style="margin-top:6px">제작 K-Mokky · 문의 <a href="mailto:mokky@mokky.store">mokky@mokky.store</a></p>
+    <p style="margin-top:6px">보안 연락 <a href="mailto:mokky@mokky.store">mokky@mokky.store</a>
+    · <a href="/.well-known/security.txt">security.txt</a></p>
   </div>
 </footer>
 
